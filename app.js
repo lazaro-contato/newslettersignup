@@ -38,7 +38,7 @@ app.post("/", function(req, res){
 
     const jsonData = JSON.stringify(data);
 
-    const url = "https://us6.api.mailchimp.com/3.0/lists/d1f78d5da1?skip_merge_validation=false&skip_duplicate_check=false"
+    const url = "https://us6.api.mailchimp.com/3.0/lists/d1f78d5da1"
 
     const options = {
         method: "POST",
@@ -46,6 +46,13 @@ app.post("/", function(req, res){
     }
 
     const request = https.request(url, options, function(response){
+
+        if (response.statusCode === 200){
+            res.sendfile(__dirname + "/success.html")
+        }else {
+            res.sendfile(__dirname + "/failure.html")
+        }
+
         response.on("data", function(data){
             console.log(JSON.parse(data));
         })
@@ -56,7 +63,14 @@ app.post("/", function(req, res){
     request.end();
 
 })
+
+app.post("/failure", function(req, res){
+    res.redirect("/")
+})
  
 app.listen(3000, function() {
      console.log("Example app listening MACHO");
 });
+
+//API KEY d7e3fa315063ae96458a38253421b1cd-us6
+//Audience ID d1f78d5da1
