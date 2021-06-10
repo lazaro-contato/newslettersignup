@@ -36,29 +36,27 @@ app.post("/", function(req, res){
         ]
     }
 
-    var jsonData = JSON.stringify(data);
+    const jsonData = JSON.stringify(data);
 
-    const url = "https://us6.api.mailchimp.com/3.0/lists/d1f78d5da1"
+    const url = "https://us6.api.mailchimp.com/3.0/lists/d1f78d5da1?skip_merge_validation=false&skip_duplicate_check=false"
 
     const options = {
         method: "POST",
-        auth: "lazaro:d7e3fa315063ae96458a38253421b1cd-us6"
-
+        auth: "lazaro1:d7e3fa315063ae96458a38253421b1cd-us6"
     }
 
     const request = https.request(url, options, function(response){
-            response.on("data", function(data){
-                console.log(JSON.parse(data))
-            })
+        response.on("data", function(data){
+            console.log(JSON.parse(data));
+        })
+
     })
 
-    request.write(jsonData)
-    request.end
+    request.write(jsonData);
+    request.end();
+
 })
  
 app.listen(3000, function() {
      console.log("Example app listening MACHO");
 });
-
-//API KEY d7e3fa315063ae96458a38253421b1cd-us6
-//Audience ID d1f78d5da1
