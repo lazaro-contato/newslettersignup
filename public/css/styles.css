@@ -33,7 +33,7 @@ body {
 }
 
 .middle {
-  border-radius: 0;
+  border-radius: none !important;
   margin-bottom: -1px;
   
 }
