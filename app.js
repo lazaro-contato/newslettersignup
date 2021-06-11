@@ -68,8 +68,8 @@ app.post("/failure", function(req, res){
     res.redirect("/")
 })
  
-app.listen(3000, function() {
-     console.log("Example app listening MACHO");
+app.listen(process.env.PORT || 3000, function() {
+     console.log("Server is running");
 });
 
 //API KEY d7e3fa315063ae96458a38253421b1cd-us6
