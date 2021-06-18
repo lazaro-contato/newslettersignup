@@ -72,5 +72,3 @@ app.listen(process.env.PORT || 3000, function() {
      console.log("Server is running");
 });
 
-//API KEY d7e3fa315063ae96458a38253421b1cd-us6
-//Audience ID d1f78d5da1
